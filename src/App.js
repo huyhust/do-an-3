@@ -2,30 +2,55 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-
 import Header from "./Components/Header";
-import { createContext, useEffect } from "react";
+import { createContext,  useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 const MyContext = createContext();
 
 function App() {
 
+
   const [countryList, setCountryList] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState(''); // Tên hàm setter đã được sửa
+
+
+
 
   useEffect(() => {
-    axios.get("https://restcountries.com/v3.1/all")
-      .then((res) => {
-        setCountryList(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  const value = { countryList, setCountryList };
+    getCountry("https://countriesnow.space/api/v0.1/countries/");
+
+  },[]);
+
+  const getCountry=async(url)=>{
+    const responsive = await axios.get(url).then((res)=>{
+
+      console.log(res.data.data);
+      setCountryList(res.data.data);
+    })
+
+  }
+const values = {
+    countryList,
+    setSelectedCountry, // <--- Thêm tên mới này
+    selectedCountry
+  };
+
+
+
+
+
+
+
   return (
 
     <BrowserRouter>
-    <MyContext.Provider>
+    <MyContext.Provider value={values}>
       <Header/>
 
       <Routes>
@@ -40,3 +65,5 @@ function App() {
 }
 
 export default App;
+
+export {MyContext};
