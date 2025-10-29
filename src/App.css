@@ -324,7 +324,9 @@ nav .navPart1 .catWrapper .sidebarNav ul li{
     list-style: none;
     width: 100%;
 
-    padding: 0px 15px;
+    padding: 0px 10px;
+
+    left: 100%;
 
 }
 
@@ -339,10 +341,46 @@ nav .navPart1 .catWrapper .sidebarNav li button{
 
 }
 
+nav .navPart1 .catWrapper .sidebarNav li button svg{
+
+    font-size: 13px;
+    opacity: 0.6;
+}
+
 nav .navPart1 .catWrapper .sidebarNav li button:hover{
     background: transparent !important;
 
 }
+
+
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu{
+    position: absolute;
+    top: 0%;
+
+    left: 102%;
+    width: 250px;
+    height: 100%;
+
+    background: #fff;
+    z-index: 100;
+
+    opacity: 0;
+    visibility: hidden;
+    padding: 20px;
+    border-left: 1px solid rgba(0,0,0,.1);
+
+}
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu{
+
+    opacity: 1;
+    visibility: inherit;
+    left: 100%;
+
+    padding: 20px;
+
+}
+
+
 
 
 
@@ -646,7 +684,7 @@ nav .navPart2 ul li:hover .submenu{
 
 .productRow .hd{
 
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
@@ -748,7 +786,7 @@ nav .navPart2 ul li:hover .submenu{
     position: absolute;
 
     top: 20px;
-    right:10px;
+    right:-100%;
     z-index:1000;
 
     display: flex;
@@ -777,7 +815,7 @@ nav .navPart2 ul li:hover .submenu{
 
     box-shadow:  0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
 
-    transition: all 0.0s !important;
+    transition: all 0.3s !important;
 
 
 }
@@ -792,7 +830,7 @@ nav .navPart2 ul li:hover .submenu{
 
     pointer-events: none;
 
-    font-size: 15px;
+    font-size: 15px !important;
 
 
 
@@ -816,11 +854,23 @@ nav .navPart2 ul li:hover .submenu{
 }
 
 
+.productItem .imgWrapper img{
+    transition: all 0.3 ease-in-out;
+}
+
+
+
+
 .productItem .imgWrapper:hover .actions{
 
     opacity: 1;
     right: 10px;
     
+}
+
+.productItem .imgWrapper:hover img{
+
+    transform: scale(1.1);
 }
 
 
