@@ -9,7 +9,7 @@ import { useState } from "react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import Footer from "./Components/Footer";
 
 const MyContext = createContext();
 
@@ -58,6 +58,8 @@ const values = {
         <Route path="/" exact={true} element={<Header/>}/>
 
       </Routes>
+
+        <Footer/>
       </MyContext.Provider>
     </BrowserRouter>
    

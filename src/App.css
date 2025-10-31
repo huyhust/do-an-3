@@ -8,6 +8,8 @@ body{font-family: "Lato", sans-serif; font-size: 14px ; color: rgba(0,0,0, 0.8);
 
 .bg-blue{
     background: #233a95;
+
+    overflow-x: hidden;
 }
 
 @media (min-width:1300px){
@@ -268,7 +270,15 @@ header .part3 .circle svg{
 .locationModal .close_ svg{
     font-size: 22px;
     opacity: 0.7;
+
+
 }
+
+nav {
+  position: relative;
+  z-index: 9999; /* cao hơn banner */
+}
+
 nav .navPart1{
 
     max-width: 20%;
@@ -307,7 +317,7 @@ nav .navPart1 .catWrapper .sidebarNav{
     padding: 15px 0px;
     transition: all 0.2s;
     visibility: hidden;
-    z-index: 100;
+    z-index: 200;
 
 }
 
@@ -350,6 +360,7 @@ nav .navPart1 .catWrapper .sidebarNav li button svg{
 nav .navPart1 .catWrapper .sidebarNav li button:hover{
     background: transparent !important;
 
+
 }
 
 
@@ -369,6 +380,10 @@ nav .navPart1 .catWrapper .sidebarNav ul li .submenu{
     padding: 20px;
     border-left: 1px solid rgba(0,0,0,.1);
 
+      z-index: 9999;
+
+    
+
 }
 nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu{
 
@@ -377,6 +392,7 @@ nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu{
     left: 100%;
 
     padding: 20px;
+    z-index: 9999;
 
 }
 
@@ -585,6 +601,10 @@ nav .navPart2 ul li:hover .submenu{
     position: relative;
     overflow: hidden;
 
+    z-index: 100;
+
+    overflow: visible;
+
 }
 
 
@@ -669,6 +689,8 @@ nav .navPart2 ul li:hover .submenu{
     padding: 25px 0px;
 
     width:100%;
+
+    z-index: 100;
 }
 
 
@@ -682,9 +704,12 @@ nav .navPart2 ul li:hover .submenu{
 }
 
 
-.productRow .hd{
+ .hd{
 
     font-size: 20px;
+
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 
@@ -901,4 +926,327 @@ nav .navPart2 ul li:hover .submenu{
     background: #ff4d4f !important;
     color: #fff !important;
 
+}
+
+ .homeCat{
+
+    padding: 35px 0px;
+
+
+
+}
+
+.homeCat .swiper{
+
+    overflow: inherit !important;
+
+}
+
+
+.homeCat .swiper .item {
+
+
+    padding: 15px;
+
+    width: 100%;
+
+    height: auto;
+
+
+
+    /* border-radius: 10px; */
+     /* text-align: center; */
+
+
+
+
+
+}
+
+
+
+
+
+
+.homeCat .swiper .item img{
+
+
+    width: 80%;
+
+      /* max-width: 90px; 
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto; */
+
+}
+
+
+
+.homeCat .swiper-button-prev, .homeCat .swiper-button-next{
+
+    top: -30px !important;
+
+    width: 30px !important;
+
+    height: 30px !important;
+
+}
+
+
+.homeCat .swiper-button-prev{
+
+    right: 68px !important;
+    left: inherit !important;
+}
+
+
+.homeCat .swiper-button-prev, .homeCat .swiper-button-next::after{
+
+    font-size: 12px !important;
+
+}
+
+
+
+.productRow2{
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.productRow2 .productItem{
+
+
+    width: 23%;
+
+    overflow: hidden;
+    border-right: 1px solid rgba(0,0,0,0.1 ) !important;
+
+
+}
+
+
+.bannerSec{
+    gap: 15px;
+}
+
+
+.sticky{
+
+    position: sticky;
+
+    top: 100px;
+    z-index: 100;
+}
+
+
+.newsLetterSection{
+
+    width: 100%;
+
+    height: 400px;
+
+    background: #233a95;
+
+    position: relative;
+
+    overflow: hidden;
+    padding: 100px  0px;
+
+}
+
+
+.newsLetterSection .col-md-6{
+    position: static !important;
+}
+
+
+
+.newsLetterSection p{
+
+    font-size: 18px;
+
+    margin: 10px 0px !important;
+
+}
+
+.newsLetterSection .h3{
+
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+
+.newsLetterSection p.text-light{
+
+    color: #fff !important;
+
+    opacity: 0.5;
+
+    font-size: 15px;
+
+
+}
+
+
+.newsLetterSection img{
+
+    position: absolute;
+
+    bottom: 0px;
+
+    right: 0px;
+}
+
+
+.newsLetterSection form{
+
+    width: 100%;
+
+    height: 60px;
+
+    background: #fff;
+
+    padding:  10px;
+    position: relative;
+
+    border-radius: 5px;
+}
+
+.newsLetterSection form svg{
+
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    font-size: 25px;
+
+    opacity: 0.3;
+
+
+}
+
+
+.newsLetterSection form input{
+
+    width: 100%;
+    height: 100%;
+
+    background: #fff !important;
+
+    outline: none !important;
+    border: 0px !important;
+    
+    padding-left:40px;
+
+    padding-right: 200px;
+
+
+
+}
+
+.newsLetterSection form button{
+
+
+    position: absolute;
+    top: 6px;
+    right: 7px;
+    background: #233a95 !important;
+    font-size: 14px !important;
+
+    padding: 12px 25px !important;
+    color: #fff !important;
+    text-transform: capitalize !important;
+    font-weight: 600 !important;
+
+
+}
+
+
+footer {
+
+    width: 100%;
+    height: 500px;
+
+    margin: auto;
+    background: #fff;
+    padding:35px 0px;
+
+}
+
+footer .topInfo{
+
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 20px;
+}
+
+footer .topInfo .col{
+
+    padding: 10px 15px;
+    padding-left: 40px;
+
+    border-right: 1px solid rgba(0,0,0,0.2);
+}
+
+footer .topInfo .col:last-child{
+
+    border-right: 0px;
+}
+
+footer .topInfo .col svg{
+
+    font-size: 26px;
+}
+
+
+footer .topInfo .col span{
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+footer .linksWrap h5{
+
+
+    font-size: 17px;
+    margin-left: 0;
+
+    padding-left: 0;
+    font-weight: 600;
+
+    margin-bottom: 20px;
+
+
+
+}
+
+footer .linksWrap ul { 
+    padding-left: 0; /* KHẮC PHỤC: Xóa khoảng đệm mặc định của UL */
+    margin: 0;      /* Tùy chọn: Đảm bảo không có lề trên/dưới dư thừa */
+}
+
+
+footer .linksWrap ul li{
+
+    list-style: none;
+
+    margin-bottom: 10px;
+
+
+}
+
+footer .linksWrap ul li a{
+
+    color: #71778e;
+    font-size: 13px;
+
+    text-decoration: none;
+}
+footer .linksWrap ul li a:hover{
+
+    text-decoration: dotted;
 }
