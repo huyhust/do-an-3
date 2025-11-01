@@ -1250,3 +1250,32 @@ footer .linksWrap ul li a:hover{
 
     text-decoration: dotted;
 }
+
+footer .copyright ul li a{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+
+footer .copyright ul li a svg{
+
+    font-size: 16px;
+    color: rgba(0,0,0, 0.8);
+
+}
+
+footer .copyright ul li a:hover{
+
+    background: #2bbef9 !important;
+}
+
+
+footer .copyright ul li a:hover svg{
+
+    color: #fff !important;
+}
