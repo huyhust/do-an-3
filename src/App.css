@@ -607,6 +607,19 @@ nav .navPart2 ul li:hover .submenu{
 
 }
 
+.homeBannerSection .swiper{
+    overflow: inherit !important;
+
+
+}
+
+.homeBannerSection .swiper .item{
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+
 
 .homeBannerSection *{
 
@@ -1279,3 +1292,25 @@ footer .copyright ul li a:hover svg{
 
     color: #fff !important;
 }
+
+
+.productModal .MuiPaper-elevation{
+    padding: 25px;
+    position: relative;
+
+    max-width: 900px !important;
+    width: 1000px;
+
+}
+
+
+
+.productModal h4{
+
+
+    font-size: 20px !important;
+    color: rgba(0,0,0, 0.7) !important;
+}
+
+
+

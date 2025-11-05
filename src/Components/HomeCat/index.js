@@ -1,66 +1,67 @@
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import { Link } from "react-router-dom";
+
+import { MyContext } from "../../App";
+
+const HomeCat = (props) => {
+
+    const context = useContext(MyContext);
+
+    return (
+        <section className="homeCat pb-2">
+            <div className="container">
+                <h3 className="mb-3 hd">Featured Categories</h3>
+                <Swiper
+                    slidesPerView={8}
+                    spaceBetween={0}
+                    navigation={context.windowWidth>992 ? true : false}
+                    slidesPerGroup={context.windowWidth>992 ? 3 : 1}
+                    modules={[Navigation]}
+                    loop={false}
+                    className="mySwiper"
+                    breakpoints={{
+                        320: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                          },
+                        500: {
+                          slidesPerView: 5,
+                          spaceBetween: 10,
+                        },
+                        768: {
+                          slidesPerView: 8,
+                          spaceBetween: 10,
+                        }
+                      }}
+                >
 
 
 
-const HomeCat = () => {
-  const [itemBg] = useState([
+                    {
+                        props.catData?.length !== 0 && props.catData?.map((cat, index) => {
+                            return (
+                                <SwiperSlide key={index}>
+                                    <Link to={`/products/category/${cat._id}`}>
+                                        <div className="item text-center cursor" style={{ background: cat.color }}>
+                                            <img src={cat.images[0]} />
+                                        </div>
+                                        <h6>{cat.name}</h6>
+                                    </Link>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
 
-    "#fffceb",
-    "#ecffec",
-    "#feefea",
-    "#fff3eb",
-    "#fff3ff",
-    "#f2fce4",
-    "#feefea",
-    "#fffceb",
-    "#feefea",
-    "#ecffec",
-    "#feefea",
-    "#fff3eb",
-    "#fff3ff",
-    "#f2fce4"
-  ]);
 
-  return (
-    <section className="homeCat">
-      <div className="container">
 
-        
-          <h3 class="mb-4 hd">Feature categories</h3>
-        <Swiper
-       
-          slidesPerView={10}
-          spaceBetween={8}
-          navigation={true}
-          slidesPerGroup={3}
-             modules={[Navigation]}
-        //   pagination={{ clickable: true }}
-        //   autoplay={{ delay: 2500, disableOnInteraction: false }}
-          className="mySwiper"
-        >
-          {itemBg.map((item, index) => {
-
-            return(
-            <SwiperSlide >
-              <div className="item text-center cursor" style={{ background: item }}>
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-9.png" />
-                <h6>Red Apple</h6>
-              </div>
-            </SwiperSlide>
-
-            )
-        })
-
-    }
-        </Swiper>
-      </div>
-    </section>
-  );
-};
+                </Swiper>
+            </div>
+        </section>
+    )
+}
 
 export default HomeCat;

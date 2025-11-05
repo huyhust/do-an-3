@@ -2,12 +2,31 @@ import Rating from "@mui/material/Rating";
 import { TfiFullscreen } from "react-icons/tfi";
 import Button from "@mui/material/Button";
 import { LuHeart } from "react-icons/lu";
+import ProductModal from "../ProductModal";
+
+import { useState } from "react";
+
+
 const ProductItem = () => {
+
+
+  const [isOpenProductModal, setisOpenProductModal] = useState(false);
+  const viewProductDetails=(id)=>{
+
+    setisOpenProductModal(true);
+  }
+
+
+  const closeProductModal=()=>{
+
+    setisOpenProductModal(false);
+  }
 
 
 
     return(
-                    <div className="item productItem">
+      <>
+        <div className="item productItem">
         <div className="imgWrapper">
           <img
             src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-3-346x310.jpg"
@@ -20,7 +39,7 @@ const ProductItem = () => {
 
           <div className="actions">
 
-            <Button>
+            <Button onClick={()=> viewProductDetails()}>
 
               <TfiFullscreen/>
             </Button>
@@ -37,7 +56,9 @@ const ProductItem = () => {
          <h4>Werther's Original Caramel hard candies</h4>
         <span className="text-success  d-block">In Stock</span>
 
-        <Rating className="mt-2 mb-2" name="read-only" value={5} readOnly size="small"/>
+        <Rating className="mt-2 mb-2" name="read-only" value={5} readOnly size="small" precision={0.5}/>
+
+
 
 
         <div className="d-flex">
@@ -52,12 +73,22 @@ const ProductItem = () => {
 
        </div>
         </div>
+
+
+        {
+
+          isOpenProductModal === true && <ProductModal closeProductModal={closeProductModal}/>
+        }
+
+
+        {/* {<ProductModal/>} */}
         
 
 
             
-
-        
+ 
+      
+      </>
 
     )
 }
