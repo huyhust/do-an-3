@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/logo.jpg";
 import  Button  from '@mui/material/Button';
 import CountryDropdown from '../CountryDropdown';
 import SearchBox  from "./SearchBox";

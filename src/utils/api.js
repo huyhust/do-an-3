@@ -75,4 +75,5 @@ export const uploadImage = async (url, formData) => {
 export const deleteImages = async (url,image ) => {
     const { res } = await axios.delete(`${process.env.REACT_APP_API_URL}${url}`, params,image);
     return res;
-}
+} 
+
