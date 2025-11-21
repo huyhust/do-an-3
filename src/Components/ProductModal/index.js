@@ -1,280 +1,198 @@
 import Dialog from '@mui/material/Dialog';
-import { MdClose } from "react-icons/md";
+import {MdClose} from "react-icons/md";
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
-import { useContext, useEffect, useState } from 'react';
-import QuantityBox from '../QuantityBox';
-import { IoIosHeartEmpty } from "react-icons/io";
-import { MdOutlineCompareArrows } from "react-icons/md";
+import Slider from "react-slick";
+import {useContext, useRef} from "react";
+import InnerImageZoom from 'react-inner-image-zoom';
+import '../../assets/css/styles.css';
+
+import QuantityBox  from '../QuantityBox';
+
+import {IoIosHeartEmpty} from "react-icons/io";
+import { FaCodeCompare } from "react-icons/fa6";
 import { MyContext } from '../../App';
-import ProductZoom from '../ProductZoom';
-import { IoCartSharp } from "react-icons/io5";
-import { editData, fetchDataFromApi, postData } from '../../utils/api';
-import { FaHeart } from "react-icons/fa";
 
 
-const ProductModal = (props) => {
 
-    const [productQuantity, setProductQuantity] = useState();
-    const [chengeQuantity, setchengeQuantity] = useState(0);
-    let [cartFields, setCartFields] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
-    const [activeSize, setActiveSize] = useState(null);
-    const [tabError, setTabError] = useState(false);
-    const [isAddedToMyList, setSsAddedToMyList] = useState(false);
+const ProductModal = (props) =>{
 
+    const zoomSliderBig = useRef();
+    const zoomSlider = useRef();
     const context = useContext(MyContext);
 
-    useEffect(() => {
-        if (props?.data?.productRam.length === 0 && props?.data?.productWeight.length === 0 && props?.data?.size.length === 0) {
-            setActiveSize(1);
-        }
+    var settings ={
 
-        const user = JSON.parse(localStorage.getItem("user"));
-
-        fetchDataFromApi(`/api/my-list?productId=${props?.data?.id}&userId=${user?.userId}`).then((res) => {
-            if (res.length !== 0) {
-                setSsAddedToMyList(true);
-            }
-        })
-
-    }, [])
-
-    const quantity = (val) => {
-        setProductQuantity(val);
-        setchengeQuantity(val)
-    }
-
-    const isActive = (index) => {
-        setActiveSize(index);
-        setTabError(false);
-    }
-
-    // const selectedItem = (item, quantityVal) => {
-    //     if (chengeQuantity !== 0) {
-    //         setIsLoading(true);
-    //         const user = JSON.parse(localStorage.getItem("user"));
-    //         cartFields.productTitle = item?.productTitle
-    //         cartFields.image = item?.image
-    //         cartFields.rating = item?.rating
-    //         cartFields.price = item?.price
-    //         cartFields.quantity = quantityVal
-    //         cartFields.subTotal = parseInt(item?.price * quantityVal)
-    //         cartFields.productId = item?.id
-    //         cartFields.userId = user?.userId
-
-    //         //console.log(item?._id)
-
-    //         editData(`/api/cart/${item?._id}`, cartFields).then((res) => {
-    //             setTimeout(() => {
-    //                 setIsLoading(false);
-    //                 const user = JSON.parse(localStorage.getItem("user"));
-    //                 fetchDataFromApi(`/api/cart?userId=${user?.userId}`).then((res) => {
-    //                     setCartData(res);
-    //                 })
-    //             }, 1000)
-    //         })
-    //     }
-
-    // }
-
-
-    const addtoCart = () => {
-
-        if (activeSize !== null) {
-            const user = JSON.parse(localStorage.getItem("user"));
-
-            cartFields.productTitle = props?.data?.name
-            cartFields.image = props?.data?.images[0]
-            cartFields.rating = props?.data?.rating
-            cartFields.price = props?.data?.price
-            cartFields.quantity = productQuantity
-            cartFields.subTotal = parseInt(props?.data?.price * productQuantity)
-            cartFields.productId = props?.data?.id
-            cartFields.countInStock = props?.data?.countInStock
-            cartFields.userId = user?.userId
-
-
-            context.addToCart(cartFields);
-        } else {
-            setTabError(true);
-        }
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        fade: false,
+        arrows: true
 
     }
 
+    var settings2 = {
 
-    const addToMyList = (id) => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (user !== undefined && user !== null && user !== "") {
-            const data = {
-                productTitle: props?.data?.name,
-                image: props?.data?.images[0],
-                rating: props?.data?.rating,
-                price: props?.data?.price,
-                productId: id,
-                userId: user?.userId
-            }
-            postData(`/api/my-list/add/`, data).then((res) => {
-                if (res.status !== false) {
-                    context.setAlertBox({
-                        open: true,
-                        error: false,
-                        msg: "the product added in my list"
-                    })
-                } else {
-                    context.setAlertBox({
-                        open: true,
-                        error: true,
-                        msg: res.msg
-                    })
-                }
-
-            })
-        } else {
-            context.setAlertBox({
-                open: true,
-                error: true,
-                msg: "Please Login to continue"
-            })
-        }
-
+        dots: false,
+        infinite: false,
+        speed: 700,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        fade: false,
+        arrows: true,
     }
 
+    const goto = (index) => {
+
+
+        zoomSlider.current.slickGoTo(index);
+        zoomSliderBig.current.slickGoTo(index);
+    }
 
     return (
+
         <>
-            <Dialog open={true} className="productModal" onClose={() => props.closeProductModal(false)}>
-              
-                <Button className='close_' onClick={()=> context.setisOpenProductModal(false)}><MdClose /></Button>
-
-                <h4 class="mb-1 font-weight-bold">All natural italian-style chicken meatballs</h4>
-
-                <div className='d-flex align-items-center'>
-
-                    <span>Brands:</span>
-                    <span className='ml-2'><b>Wekch's</b></span>
-                </div>
-
-                <Rating name="read-only"  value={5} size="small" precision={0.5} readOnly></Rating>
-
-                <hr/>
+            <Dialog open={true} className='productModal' onClose={()=> context.setisOpenProductModal(false)}>
 
 
-                <div className='row mt-2 productDetaileModal'>
-                    <div className='col-md-5'>
-                        <ProductZoom images={props?.data?.images} discount={props?.data?.discount} />
-                    </div>
 
-                    <div className='col-md-7'>
-                        <div className='d-flex info align-items-center mb-3'>
-                            <span className='oldPrice lg mr-2'>Rs: {props?.data?.oldPrice}</span>
-                            <span className='netPrice text-danger lg'>Rs: {props?.data?.price}</span>
+                    <Button className='close_' onClick={()=> context.setisOpenProductModal(false)}><MdClose/></Button>
+                    <h4 className="mb-1 font-weight-bold">All Natural Italia</h4> 
+                    <div className='d-flex align-items-center'>
+                        <div className='d-flex align-items-center mr-4'>
+                            <span>Brands:</span>
+                             <span className='ml-2'>Wech's</span>
+
                         </div>
 
-                        <span className="badge bg-success">IN STOCK</span>
+                        <Rating name='read-only' value={5} size='small' precision={0.5} readOnly/>
 
-                        <p className='mt-3'>Rs: {props?.data?.description}</p>
-
-
-
-                        {
-                            props?.data?.productRam?.length !== 0 &&
-                            <div className='productSize d-flex align-items-center'>
-                                <span>RAM:</span>
-                                <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
-                                    {
-                                        props?.data?.productRam?.map((item, index) => {
-                                            return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
-                                            )
-                                        })
-                                    }
-
-                                </ul>
-                            </div>
-                        }
-
-
-                        {
-                            props?.data?.size?.length !== 0 &&
-                            <div className='productSize d-flex align-items-center'>
-                                <span>Size:</span>
-                                <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
-                                    {
-                                        props?.data?.size?.map((item, index) => {
-                                            return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
-                                            )
-                                        })
-                                    }
-
-                                </ul>
-                            </div>
-                        }
-
-
-                        {
-                            props?.data?.productWeight?.length !== 0 &&
-                            <div className='productSize d-flex align-items-center'>
-                                <span>Weight:</span>
-                                <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
-                                    {
-                                        props?.data?.productWeight?.map((item, index) => {
-                                            return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
-                                            )
-                                        })
-                                    }
-
-                                </ul>
-                            </div>
-                        }
-
-
-
-                        <div className='d-flex align-items-center actions_'>
-                            <QuantityBox quantity={quantity} item={props?.data} />
-
-                            <Button className='btn-blue bg-red btn-lg btn-big btn-round ml-3' onClick={() => addtoCart()}><IoCartSharp />
-                                {
-                                    context.addingInCart === true ? "adding..." : " Add to cart"
-                                }
-                            </Button>
-                        </div>
-
-
-                        <div className='d-flex align-items-center mt-5 actions'>
-                            <Button className='btn-round btn-sml' variant="outlined" onClick={() => addToMyList(props?.data?.id)} >
-
-                                {
-                                    isAddedToMyList === true ?
-                                    <>
-                                        <FaHeart className="text-danger" />
-                                        &nbsp; ADDED TO WISHLIST
-                                    </>
-
-                                    :
-
-                                <>
-                                    <IoIosHeartEmpty />
-                                    &nbsp; ADD TO WISHLIST
-                                </>
-                                }
-
-
-                            </Button>
-                            <Button className='btn-round btn-sml ml-3' variant="outlined"><MdOutlineCompareArrows /> &nbsp; COMPARE</Button>
-                        </div>
+                       
 
                     </div>
 
-                </div>
+                     <hr/>
+                    <div className='row mt-2 productDetailModal mt-2'>
+
+                        <div className='col-md-5'>
+
+                            <div className='productZoom position-relative'>
+
+                                <div className='badge badge-primary'>23%</div>
+
+                                <Slider {...settings2} className="zoomSliderBig" ref={zoomSliderBig}>
+                                <div className='item'>
+                                    <InnerImageZoom
+                                        zoomType="hover" zoomScale={1}
+                                        src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`}
+
+                                    />
+
+                                </div>
+
+                                <div className='item'>
+                                    <InnerImageZoom
+                                        zoomType="hover" zoomScale={1}
+                                        src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`}
+
+                                    />
+
+                                </div>
+
+                                <div className='item'>
+                                    <InnerImageZoom
+                                        zoomType="hover" zoomScale={1}
+                                        src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`}
+
+                                    />
+
+                                </div>
+                                
+                                </Slider>
+
+
+
+                            </div>
+
+                            <Slider {...settings} className='zoomSlider' ref={zoomSlider}>
+                                
+                                     <div className='item'>
+                                                <img src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`} className='w-100' onClick={() => goto (0)}/>
+                                                
+                                                
+
+                                            </div>
+
+                                     <div className='item'>
+                                                <img src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`} className='w-100' onClick={() => goto (1)}/>
+                                                
+                                                
+
+                                            </div>
+
+
+                                     <div className='item'>
+                                                <img src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`} className='w-100' onClick={() => goto (2)}/>
+                                                
+                                                
+
+                                            </div>
+
+                                        
+
+
+                                
+                                            
+                                
+                            </Slider>
+
+                        </div>
+
+                        
+                        <div className='col-md-7'>
+                            <div className='d-flex info align-items-center mb-4'>
+
+                                <span className='oldPrice lg mr-2'>$9.4</span>
+                                <span className='netPrice text-danger lg'>$9.5</span>
+                            </div>
+
+
+                            <span className='badge bg-success'>In stock</span>
+
+                            <p className='mt-3'>asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasd</p>
+                        
+                            <div className='d-flex align-items-center'>
+                               <QuantityBox/>
+                               <Button className='btn-blue btn-lg btn-big btn-round'>Addto Cart</Button>
+
+                            </div>
+
+                            <div className='d-flex align-items-center mt-4 actions'>
+
+                                <Button className='btn-round btn-sml' variant='outlined'><IoIosHeartEmpty/>djt me em</Button>
+                                 <Button className='btn-round btn-sml' variant='outlined'><FaCodeCompare />compare</Button>
+
+
+                            </div>
+
+                            
+                        </div>
+
+                    </div>
+
 
 
 
             </Dialog>
+        
+        
+        
         </>
+
+
     )
 }
 
-export default ProductModal;
+export default ProductModal

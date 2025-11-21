@@ -1,62 +1,38 @@
-import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import Button from '@mui/material/Button';
-import { useContext, useEffect, useState } from "react";
-import { MyContext } from "../../App";
 
-const QuantityBox = (props) => {
+import {useState} from "react";
+const  QuantityBox = () =>{
 
-    const [inputVal, setInputVal] = useState(1);
+const [inputVal, setInputVal] = useState(1);
 
-    const context = useContext(MyContext);
+const minus = ()=>{
 
-    useEffect(() => {
-        if (props?.value !== undefined && props?.value !== null && props?.value !== "") {
-            setInputVal(parseInt(props?.value))
-        }
-    }, [props.value])
+    if( inputVal !==1 && inputVal > 0){
 
-    const minus = () => {
-        if (inputVal !== 1 && inputVal > 0) {
-            setInputVal(inputVal - 1);
-        }
-        context.setAlertBox({
-            open:false,
-        })
-
+    setInputVal(inputVal-1)
     }
 
-    const plus = () => {
-        let stock = parseInt(props.item.countInStock);
-        if(inputVal<stock){
-            setInputVal(inputVal + 1);
-        }else{
-            context.setAlertBox({
-                open:true,
-                error:true,
-                msg:"The quantity is greater than product count in stock"
-            })
-        }
-    }
 
-    useEffect(() => {
-        if (props.quantity) {
-            props.quantity(inputVal)
-        }
+}
 
-        if (props.selectedItem) {
-            props.selectedItem(props.item, inputVal);
-        }
+const plus = ()=>{
 
-    }, [inputVal]);
-
+    setInputVal(inputVal+1)
+}
     return (
-        <div className='quantityDrop d-flex align-items-center'>
-            <Button onClick={minus}><FaMinus /></Button>
-            <input type="text" value={inputVal} />
-            <Button onClick={plus}><FaPlus /></Button>
+        <>
+        <div className="quantityDrop d-flex align-items-center">
+
+        <Button onClick={minus}><FaMinus/></Button>
+        <input type="text" value={inputVal}/>
+        <Button onClick={plus}><FaPlus/></Button>
         </div>
+        </>
+
     )
+
 }
 
 export default QuantityBox;

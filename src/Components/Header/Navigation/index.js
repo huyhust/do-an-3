@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { FaAngleRight } from "react-icons/fa";
 
 const Navigation = () => {
-  const [isopenSidebarVal, setisopenSidebarVal] = useState(true);
+  const [isopenSidebarVal, setisopenSidebarVal] = useState(false);
 
   return (
     <nav>

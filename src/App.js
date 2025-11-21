@@ -10,6 +10,7 @@ import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "./Components/Footer";
+import ProductModal from "./Components/ProductModal";
 
 const MyContext = createContext();
 
@@ -18,7 +19,7 @@ function App() {
 
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(''); // Tên hàm setter đã được sửa
-
+  const[isOpenProductModal, setisOpenProductModal] = useState(false);
 
 
 
@@ -38,7 +39,9 @@ function App() {
 const values = {
     countryList,
     setSelectedCountry, // <--- Thêm tên mới này
-    selectedCountry
+    selectedCountry,
+  isOpenProductModal,
+ setisOpenProductModal
   };
 
 
@@ -60,6 +63,9 @@ const values = {
       </Routes>
 
         <Footer/>
+        {
+          isOpenProductModal === true && <ProductModal/>
+        }
       </MyContext.Provider>
     </BrowserRouter>
    

@@ -3,23 +3,26 @@ import { TfiFullscreen } from "react-icons/tfi";
 import Button from "@mui/material/Button";
 import { LuHeart } from "react-icons/lu";
 import ProductModal from "../ProductModal";
-
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { MyContext } from "../../App";
 
 
 const ProductItem = () => {
 
+  const context = useContext(MyContext);
 
-  const [isOpenProductModal, setisOpenProductModal] = useState(false);
+
+  const [isOpenProductModal, setisOpenProductModal] = useState();
+  
   const viewProductDetails=(id)=>{
 
-    setisOpenProductModal(true);
+    context.setisOpenProductModal(true);
   }
 
 
   const closeProductModal=()=>{
 
-    setisOpenProductModal(false);
+    context.setisOpenProductModal(false);
   }
 
 
@@ -44,7 +47,7 @@ const ProductItem = () => {
               <TfiFullscreen/>
             </Button>
 
-                        <Button>
+              <Button>
 
               <LuHeart style={{fontSize:'20px'}}/>
             </Button>
