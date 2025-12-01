@@ -1,77 +1,66 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import './App.css';
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
+import Listing from "./Pages/Listing";
+
 import Header from "./Components/Header";
-import { createContext,  useEffect } from "react";
+import Footer from "./Components/Footer";
+import ProductModal from "./Components/ProductModal";
+
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Footer from "./Components/Footer";
-import ProductModal from "./Components/ProductModal";
 
 const MyContext = createContext();
 
 function App() {
-
-
   const [countryList, setCountryList] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState(''); // Tên hàm setter đã được sửa
-  const[isOpenProductModal, setisOpenProductModal] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [isOpenProductModal, setisOpenProductModal] = useState(false);
 
-
-
+  // Fetch API
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries/");
+  }, []);
 
-  },[]);
-
-  const getCountry=async(url)=>{
-    const responsive = await axios.get(url).then((res)=>{
-
-      console.log(res.data.data);
+  const getCountry = async (url) => {
+    try {
+      const res = await axios.get(url);
       setCountryList(res.data.data);
-    })
+    } catch (error) {
+      console.error("Lỗi khi fetch country:", error);
+    }
+  };
 
-  }
-const values = {
-    countryList,
-    setSelectedCountry, // <--- Thêm tên mới này
-    selectedCountry,
-  isOpenProductModal,
- setisOpenProductModal
-  };
-
-
-
-
-
-
+  const values = {
+    countryList,
+    selectedCountry,
+    setSelectedCountry,
+    isOpenProductModal,
+    setisOpenProductModal,
+  };
 
   return (
-
     <BrowserRouter>
-    <MyContext.Provider value={values}>
-      <Header/>
+      <MyContext.Provider value={values}>
+        <Header />
 
-      <Routes>
-        <Route path="/" exact={true} element={<Home/>}/>
-        <Route path="/" exact={true} element={<Header/>}/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cat/:id" element={<Listing />} />
+        </Routes>
 
-      </Routes>
+        <Footer />
 
-        <Footer/>
-        {
-          isOpenProductModal === true && <ProductModal/>
-        }
+        {isOpenProductModal && <ProductModal />}
       </MyContext.Provider>
     </BrowserRouter>
-   
   );
 }
 
 export default App;
-
-export {MyContext};
+export { MyContext };

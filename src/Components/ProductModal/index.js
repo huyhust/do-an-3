@@ -171,7 +171,7 @@ const ProductModal = (props) =>{
 
                             <div className='d-flex align-items-center mt-4 actions'>
 
-                                <Button className='btn-round btn-sml' variant='outlined'><IoIosHeartEmpty/>djt me em</Button>
+                                <Button className='btn-round btn-sml' variant='outlined'><IoIosHeartEmpty/>LIKE</Button>
                                  <Button className='btn-round btn-sml' variant='outlined'><FaCodeCompare />compare</Button>
 
 

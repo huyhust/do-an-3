@@ -7,7 +7,7 @@
 body{font-family: "Lato", sans-serif; font-size: 14px ; color: rgba(0,0,0, 0.8);}
 
 .bg-blue{
-    background: #233a95;
+    background: #7a55c1;
 
     overflow-x: hidden;
 }
@@ -38,7 +38,7 @@ button{
 
 .btn-blue{
 
-    background: #233a95 !important;
+    background: #6d4aae !important;
     color: #fff !important;
     text-transform: capitalize !important;
 }
@@ -129,9 +129,10 @@ background: #ccc !important;
     height: 80px; 
     min-width:170px; 
     color: #000 !important;
-     border: 1px solid rgba(0,0,0,0.2) !important; 
+     border: 1px solid rgba(0,0,0,0.1) !important; 
      border-radius: 7px !important;
      padding: 10px 15px !important;
+     background: #f1f1f1;
 }
 .headerWrapper .header .part2 .countryDrop{
     text-align: left; 
@@ -146,7 +147,7 @@ background: #ccc !important;
 .headerWrapper .header .part2 .countryDrop .name{
     font-size:14px !important; 
     text-transform:capitalize !important; 
-    color:#233a95 !important;
+    color:#6d4aae!important;
     font-weight: 700;
     line-height: 16px;
 }
@@ -449,8 +450,8 @@ nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu{
 
 
 nav .allCatTab{
-    background: #2bbef9; 
-    padding: 10px 15px  !important; 
+    background: #6d4aae; 
+    padding: 8px 15px  !important; 
     border-radius: 30px !important;
 }
 
@@ -460,7 +461,7 @@ nav .allCatTab *{color: #fff;}
 nav .allCatTab:hover{
 
 
-    background: #2bbef9;
+    background: #4104a3;
 
 }
 
@@ -535,7 +536,7 @@ nav .navPart2 ul li a svg{
 nav .navPart2 ul li a:hover{
 
     background: #f0faff;
-    color: #2bbef9;
+    color: #7a55c1;
 }
 nav .navPart2 ul li{
     position: relative;
@@ -931,7 +932,7 @@ nav .navPart2 ul li:hover .submenu{
 
 .productItem .actions button:hover{
 
-    background: #233a95 !important;
+    background: #7a55c1 !important;
 
 }
 
@@ -1115,14 +1116,14 @@ nav .navPart2 ul li:hover .submenu{
 
     width: 100%;
 
-    height: 400px;
-
-    background: #233a95;
+    height: auto;
+    background-image: linear-gradient(to bottom right, #4a2888, #7a55c1);
+ 
 
     position: relative;
 
     overflow: hidden;
-    padding: 100px  0px;
+    padding: 60px  0px;
 
 }
 
@@ -1222,7 +1223,7 @@ nav .navPart2 ul li:hover .submenu{
     position: absolute;
     top: 6px;
     right: 7px;
-    background: #233a95 !important;
+    background: #7a55c1 !important;
     font-size: 14px !important;
 
     padding: 12px 25px !important;
@@ -1339,7 +1340,7 @@ footer .copyright ul li a svg{
 
 footer .copyright ul li a:hover{
 
-    background: #2bbef9 !important;
+    background: #6d4aae !important;
 }
 
 
@@ -1491,4 +1492,93 @@ footer .copyright ul li a:hover svg{
     font-size: 15px !important;
 }
 
+.productModal .actions button:hover{
+    background: #f1f1f1;
+}
+
+.product_Listing_Page{
+
+    padding: 35px 0px;
+}
+
+.product_Listing_Page .productListing{
+
+ gap: 20px;
+
+
+}
+.product_Listing_Page .productListing .sidebar{
+
+    width: 20%;
+    flex: 0 0 20%;
+}
+
+.product_Listing_Page .productListing .sidebar .filterBox h6{
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+
+.product_Listing_Page .productListing .sidebar .scroll{
+
+    padding-left: 5px;
+    max-height: 180px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.product_Listing_Page .productListing .sidebar .scroll::-webkit-scrollbar{
+
+    
+    width: 5px !important;
+    height: 5px !important;
+    
+}
+
+.product_Listing_Page .productListing .sidebar .scroll ul li{
+    list-style: none;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root{
+
+    padding:  2px !important;
+}
+
+.css-ahj2mt-MuiTypography-root{
+
+    font-size: 13px !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root{
+
+    width: 20px !important;
+    height: 20px !important;
+}
+.css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.Mui-checked, .css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: #6d4aae !important; 
+}
+
+
+.product_Listing_Page .productListing .content_right{
+
+    width: 80%;
+    flex: 0 0 80%;
+
+    padding-left: 50px;
+
+}
+
+.range-slider .range-slider__thumb,.range-slider .range-slider__range{
+
+    background-color: #6d4aae !important;
+}
+
+.range-slider .range-slider__thumb{
+
+    width: 15px !important;
+    height: 15px !important;
+}
 
