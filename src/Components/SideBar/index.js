@@ -12,6 +12,7 @@ const SideBar = () => {
   return (
     <>
       <div className="sidebar">
+        <div className="sticky">
         <div className="filterBox">
           <h6>Product Categories</h6>
 
@@ -83,6 +84,7 @@ const SideBar = () => {
         <Link to="#"><img src="http://klbtheme.com/bacola/wp-content/uploads/2021/05/sidebar-banner.gif" className="w-100"/> </Link>
 
 
+      </div>
       </div>
     </>
   );
