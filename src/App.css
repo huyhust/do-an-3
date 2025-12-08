@@ -4,7 +4,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
 
-body{font-family: "Lato", sans-serif; font-size: 14px ; color: rgba(0,0,0, 0.8);}
+body{font-family: "Lato", sans-serif; font-size: 14px ; color: rgba(0,0,0, 0.8); font-size: 16px;}
 
 .bg-blue{
     background: #7a55c1;
@@ -32,6 +32,11 @@ body{font-family: "Lato", sans-serif; font-size: 14px ; color: rgba(0,0,0, 0.8);
 
 }
 
+.badge-success{
+    color: #00b853;
+    background: #e5f8ed ;
+}
+
 button{
     text-transform: capitalize !important;
 }
@@ -44,14 +49,14 @@ button{
 }
 
 .bg-lg{
-
+   
     font-size: 17px !important;
     padding:  10px 30px !important;
 
 }
 
 .btn-round{
-
+    
     border-radius: 30px !important;
 }
 
@@ -62,6 +67,12 @@ button{
     color: #000;
     text-transform: capitalize !important;
 
+}
+
+
+.btn-circle{
+    
+    border-radius: 50% !important; 
 }
 
 .btn-sml svg{
@@ -1682,8 +1693,93 @@ footer .copyright ul li a:hover svg{
 
 .productListing .productItem.one .img_rapper{
 
-    width: 60%;
+    width: 25%;
 }
+
+
+.section{
+
+    padding: 45px 0px;
+}
+
+.productDetail .hd{
+
+    font-size: 26px;
+
+}
+
+.productDetails .oldPrice{
+
+    font-size: 20px;
+   
+}
+.productDetails .netPrice{
+    font-size: 22px;
+}
+
+
+.productSize{
+
+    width: 100%;
+    height: auto;
+    padding: 25px 0px;
+}
+
+.productSize ul li{
+
+    margin-right: 10px !important;
+
+}
+
+.productSize ul li a{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px !important;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 5px !important;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: #000;
+    font-size: 14px !important;
+    transition: all 0.1s ease-in-out;
+
+}
+
+.productSize ul li a:hover{
+    background: #fafafa;
+}
+
+
+
+
+.productSize ul li a.active{
+    background: #6d4aae !important;
+    color: #fff !important;
+}
+
+
+.productDetails .btn-circle{
+
+    min-width: 40px !important;
+    width: 40px;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: #edeef5 !important;
+    border:  1px solid rgba(0,0,0, 0.1) !important;
+    color: #000;
+}
+
+.productDetails .btn-circle svg{
+    color: #000 !important;
+    opacity: 0.8;
+
+}
+
+
+  
+
 
 
 
