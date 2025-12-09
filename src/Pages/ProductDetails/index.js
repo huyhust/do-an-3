@@ -13,6 +13,7 @@ import { fetchDataFromApi, postData } from "../../utils/api"; // keep if availab
 import CircularProgress from "@mui/material/CircularProgress";
 import { MyContext } from "../../App";
 
+import RelatedProducts from "./RelatedProducts";
 const ProductDetails = () => {
   const sizes = ["50g", "100g", "200g", "300g", "500g"];
 
@@ -307,6 +308,9 @@ const ProductDetails = () => {
             </div>
           )}
         </div>
+        <br/>
+
+          <RelatedProducts/>
       </div>
     </section>
   );

@@ -1748,7 +1748,8 @@ footer .copyright ul li a:hover svg{
 }
 
 .productSize ul li a:hover{
-    background: #fafafa;
+    background: #ececec;
+    
 }
 
 
@@ -1769,6 +1770,55 @@ footer .copyright ul li a:hover svg{
     background: #edeef5 !important;
     border:  1px solid rgba(0,0,0, 0.1) !important;
     color: #000;
+}
+
+.productDetails .btn-circle:hover{
+    background: #ccc !important;
+}
+
+.detailsPageTabs{
+    border-radius: 25px !important;
+    background: #fafafa;
+    
+}
+
+.customTabs ul li{
+
+    margin-right: 30px !important;
+}
+
+.customTabs ul li button{
+    padding: 10px 25px !important;
+    border: 1px solid rgba(0,0,0, 0.2);
+    font-size: 14px !important;
+    text-transform: capitalize !important ; 
+    border-radius: 30px !important;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+.customTabs ul li button.active{
+    background-color: #6d4aae !important;
+    color: #fff !important;
+
+}
+.reviewsCard{
+    margin-bottom:  25px !important;
+}
+
+.reviewsCard .image{
+    width: 100px;
+}
+
+
+.reviewsCard .rounded-circle{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
 }
 
 .productDetails .btn-circle svg{
