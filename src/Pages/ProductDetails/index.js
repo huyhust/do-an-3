@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { fetchDataFromApi, postData } from "../../utils/api"; // keep if available
 import CircularProgress from "@mui/material/CircularProgress";
 import { MyContext } from "../../App";
-
+// import Cart from "./Pages/Cart";
 import RelatedProducts from "./RelatedProducts";
 const ProductDetails = () => {
   const sizes = ["50g", "100g", "200g", "300g", "500g"];

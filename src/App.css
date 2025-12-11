@@ -11,7 +11,16 @@ body{font-family: "Lato", sans-serif; font-size: 14px ; color: rgba(0,0,0, 0.8);
 
     overflow-x: hidden;
 }
+.bg-red{
+    background: #ed1743 !important;
+}
+.text-red{
+    color:#ed1743 !important;
 
+}
+.text-blue{
+    color: #53348c !important;
+}
 @media (min-width:1300px){
     .container, .container-1g, .container-md, .container-sm, .container-xl{
 
@@ -1821,15 +1830,164 @@ footer .copyright ul li a:hover svg{
     height: 100px;
 }
 
+.reviewsCard .info{
+    width: 85%;
+}
+
+.detailsPageTabs .table th, .detailsPageTabs .table td{
+
+    vertical-align: middle;
+    font-size: 14px !important;
+}
+.detailsPageTabs .table td p{
+    margin-bottom: 0px !important;
+}
+
 .productDetails .btn-circle svg{
     color: #000 !important;
     opacity: 0.8;
 
 }
 
+.progressBarBox{
+    margin-bottom: 10px;
 
+}
+
+.progress-bar{
+    font-size: 16px;
+}
+
+.reviewsCard .info p{
+    font-size: 13px;
+    line-height: 22px;
+}
   
 
+.cartPage .table thead{
+
+    background: #ececec !important;
+    overflow: hidden;
 
 
+}
+.cartPage .table thead th{
+  
+border: 0px !important;
 
+}
+
+.cartPage .table thead th:first-child{
+    border-top-left-radius: 15px !important;
+}
+
+.cartItemimgWrapper{
+
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.cartItemimgWrapper .imgWrapper{
+
+    width: 100px;
+    overflow: hidden;
+}
+
+.cartItemimgWrapper .info a:hover{
+    text-decoration: none;
+}
+
+.cartItemimgWrapper .info h6{
+    color: #343434;
+    font-weight: bold;
+}
+.cartItemimgWrapper .info h6:hover{
+    color: #ed174a !important;
+}
+.cartItemimgWrapper .info{
+
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.remove{
+    cursor: pointer;
+}
+
+.remove svg{
+    font-size: 30px;
+
+}
+
+
+.detailsPageTabs .tabContent h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.reviewForm h4{
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.reviewForm .fomr-group{
+
+    margin-bottom: 25px;
+}
+
+.reviewForm .fomr-group .form-control{
+
+    height: 50px;
+    font-size: 16px;
+    border-radius: 7px !important;
+    padding-left: 20px;
+    outline: none !important;
+}
+
+.reviewForm .fomr-group textarea.form-control{
+
+    height: 120px !important;
+    padding-top: 15px !important;
+    
+}
+
+.cartPage .quantityDrop{
+
+    zoom: 75%;
+}
+.cartPage table th, .cartPage table td{
+    vertical-align: middle !important;
+}
+
+
+.cartPage .table td, .cartPage .table th{
+
+    border-top: 0px !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+
+
+}
+
+.cartPage table tbody tr:hover{
+    background: #fafafa !important;
+
+}
+
+
+.cartDetails {
+    border-radius: 7px !important;
+
+}
+
+.cartDetail h4{
+    font-size: 16px;
+    padding-bottom: 15px;
+    font-weight: 800 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}

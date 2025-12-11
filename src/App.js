@@ -15,6 +15,7 @@ import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductDetails from "./Pages/ProductDetails";
+import Cart from "./Pages/Cart";
 
 const MyContext = createContext();
 
@@ -54,7 +55,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cat/:id" element={<Listing />} />
           <Route exact={true} path="/product/:id" element={<ProductDetails/>} />
-          <Route exact={true} path="/cart/:id" element={<Cart/>} />
+          <Route exact={true} path="/cart" element={<Cart/>} />
         </Routes>
 
         <Footer />
